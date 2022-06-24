@@ -24,7 +24,8 @@ function generatePassword(){
   var incNum = confirm("Should the password include numbers?")
   var incSp = confirm("Should the password include special characters?")
   var pass = passwordGen(incLower,incUpper,incNum,incSp,len)
-  alert("Product preshuffle " + pass)
+  return pass
+  //alert("Product preshuffle " + pass)
 
 }
 
@@ -54,35 +55,51 @@ function passwordGen(low,up,num,sp,len){
 
   if(low){
     for(var i = 0; i < Math.floor(len/numDiv); i++){
-      rtn.push(lStr.charAt(Math.floor(Math.random()*(27))))
+      rtn.push(lStr.charAt(Math.floor(Math.random()*(26))))
     }
   }
-  alert(rtn)
 
   if(up){
     for(var i = 0; i < Math.floor(len/numDiv); i++){
-      rtn.push(uStr.charAt(Math.floor(Math.random()*(27))))
+      rtn.push(uStr.charAt(Math.floor(Math.random()*(26))))
     }
   }
-  alert(rtn)
 
   if(num){
     for(var i = 0; i < Math.floor(len/numDiv); i++){
-      rtn.push(nStr.charAt(Math.floor(Math.random()*(11))))
+      rtn.push(nStr.charAt(Math.floor(Math.random()*(10))))
     }
   }
-  alert(rtn)
 
   if(sp){
     for(var i = 0; i < (Math.floor(len/numDiv)+(len%numDiv)); i++){
-      rtn.push(sStr.charAt(Math.floor(Math.random()*(12))))
+      rtn.push(sStr.charAt(Math.floor(Math.random()*(11))))
     }
   }
-  alert(rtn)
+  //alert(rtn)
+  //console.log("Preshuffle: " + rtn)
 
-  return rtn
-
-  //return shuffleStr(rtn)
+  return shuffleStr(rtn)
   
+}
+
+function shuffleStr(arr){
+  var len = arr.length
+  for(var i = 0; i < len; i++){
+    var randIndex = Math.floor(Math.random()*(len))
+    var swap1 = arr[i]
+    var swap2 = arr[randIndex]
+    console.log(swap1,swap2)
+    arr[i] = swap2
+    arr[randIndex] = swap1
+  }
+
+  var rtn = ""
+  for(var i = 0; i < len; i++){
+    rtn += arr[i]
+  }
+  //alert("shuffled array: " + rtn)
+  //console.log("shuffled array: " + rtn)
+  return rtn
 }
 
