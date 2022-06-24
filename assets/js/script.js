@@ -85,6 +85,22 @@ function passwordGen(low,up,num,sp,len){
       rtn.push(sStr.charAt(Math.floor(Math.random()*(11))))
     }
   }
+
+  if(!sp){ //Catch case of odd password len and no special characters
+    if(num){
+      for(var i = 0; i < (len%numDiv); i++){
+        rtn.push(nStr.charAt(Math.floor(Math.random()*(10))))
+      }
+    } else if(up){
+      for(var i = 0; i < (len%numDiv); i++){
+        rtn.push(uStr.charAt(Math.floor(Math.random()*(26))))
+      }
+    } else if(low){
+      for(var i = 0; i < (len%numDiv); i++){
+        rtn.push(lStr.charAt(Math.floor(Math.random()*(26))))
+      }
+    }
+  }
   //alert(rtn)
   //console.log("Preshuffle: " + rtn)
 
