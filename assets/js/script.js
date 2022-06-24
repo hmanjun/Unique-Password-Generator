@@ -23,8 +23,8 @@ function generatePassword(){
   var incUpper = confirm("Should the password include uppercase characters?")
   var incNum = confirm("Should the password include numbers?")
   var incSp = confirm("Should the password include special characters?")
-
-
+  var pass = passwordGen(incLower,incUpper,incNum,incSp,len)
+  alert("Product preshuffle " + pass)
 
 }
 
@@ -47,29 +47,42 @@ function promptLenght(){
 function passwordGen(low,up,num,sp,len){
   var lStr = "abcdefghijklmnopqrstuvwxyz"
   var uStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var nStr = "123456789"
+  var nStr = "1234567890"
   var sStr = "!@#$%^&*()?"
-
   var numDiv = low + up + num + sp
-  var rtn = ""
+  var rtn = []
 
-  if(lStr){
+  if(low){
     for(var i = 0; i < Math.floor(len/numDiv); i++){
-      rtn += lStr.charAt(Math.floor(Math.random()*(27)))
+      rtn.push(lStr.charAt(Math.floor(Math.random()*(27))))
     }
   }
+  alert(rtn)
 
-  if(uStr){
+  if(up){
     for(var i = 0; i < Math.floor(len/numDiv); i++){
-      rtn += uStr.charAt(Math.floor(Math.random()*(27)))
+      rtn.push(uStr.charAt(Math.floor(Math.random()*(27))))
     }
   }
+  alert(rtn)
 
-  if(nStr){
+  if(num){
     for(var i = 0; i < Math.floor(len/numDiv); i++){
-      rtn += nStr.charAt(Math.floor(Math.random()*(27)))
+      rtn.push(nStr.charAt(Math.floor(Math.random()*(11))))
     }
   }
+  alert(rtn)
+
+  if(sp){
+    for(var i = 0; i < (Math.floor(len/numDiv)+(len%numDiv)); i++){
+      rtn.push(sStr.charAt(Math.floor(Math.random()*(12))))
+    }
+  }
+  alert(rtn)
+
+  return rtn
+
+  //return shuffleStr(rtn)
   
 }
 
